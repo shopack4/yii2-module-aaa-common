@@ -1,0 +1,96 @@
+<?php
+/**
+ * @author Kambiz Zandi <kambizzandi@gmail.com>
+ */
+
+namespace shopack\aaa\common\models;
+
+use shopack\base\common\rest\enuColumnInfo;
+
+/*
+'uexUserID',
+'uexBirthDate',
+'uexCountryID',
+'uexStateID',
+'uexCityOrVillageID',
+'uexTownID',
+'uexHomeAddress',
+'uexZipCode',
+'uexImage',
+*/
+trait UserExtraInfoModelTrait
+{
+  public function primaryKeyValue() {
+		return $this->uexUserID;
+	}
+
+  public static function columnsInfo()
+  {
+    return [
+      'uexUserID' => [
+        enuColumnInfo::type       => 'integer',
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexBirthDate' => [
+        enuColumnInfo::type       => 'safe',
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexCountryID' => [
+        enuColumnInfo::type       => 'integer',
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexStateID' => [
+        enuColumnInfo::type       => 'integer',
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexCityOrVillageID' => [
+        enuColumnInfo::type       => 'integer',
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexTownID' => [
+        enuColumnInfo::type       => 'integer',
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexHomeAddress' => [
+        enuColumnInfo::type       => ['string', 'max' => 2048],
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexZipCode' => [
+        enuColumnInfo::type       => ['string', 'max' => 32],
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+      'uexImage' => [
+        enuColumnInfo::type       => ['string', 'max' => 128],
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => null,
+        enuColumnInfo::required   => false,
+        enuColumnInfo::selectable => true,
+      ],
+    ];
+  }
+
+}
