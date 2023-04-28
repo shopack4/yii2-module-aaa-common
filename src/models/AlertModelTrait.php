@@ -126,7 +126,7 @@ trait AlertModelTrait
 			'alrStatus' => [
 				enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuAlertStatus::NEW,
+        enuColumnInfo::default    => enuAlertStatus::New,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
 			],

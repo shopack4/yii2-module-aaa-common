@@ -8,6 +8,7 @@ namespace shopack\aaa\common\models;
 use shopack\base\common\rest\enuColumnInfo;
 // use shopack\base\common\validators\JsonValidator;
 use shopack\aaa\common\enums\enuAlertTemplateStatus;
+use shopack\aaa\common\enums\enuAlertTemplateMedia;
 
 /*
 'altID',
@@ -49,10 +50,10 @@ trait AlertTemplateModelTrait
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
 			],
-			'altMedia' => [ //E:Email, S:SMS
+			'altMedia' => [
 				enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => null,
+        enuColumnInfo::default    => null, //enuAlertTemplateMedia
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
 			],
@@ -94,7 +95,7 @@ trait AlertTemplateModelTrait
 			'altStatus' => [
 				enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuAlertTemplateStatus::NEW,
+        enuColumnInfo::default    => enuAlertTemplateStatus::Active,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
 			],

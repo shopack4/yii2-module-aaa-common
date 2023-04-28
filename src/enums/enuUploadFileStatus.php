@@ -9,14 +9,14 @@ use shopack\base\common\base\BaseEnum;
 
 abstract class enuUploadFileStatus extends BaseEnum
 {
-  const NEW 				= 'N';
-  const REMOVED 		= 'R';
+  const New 				= 'N';
+  const Removed 		= 'R';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::NEW 				=> 'New',
-		self::REMOVED 		=> 'Removed',
+		self::New 				=> 'New',
+		self::Removed 		=> 'Removed',
 	];
 
 };

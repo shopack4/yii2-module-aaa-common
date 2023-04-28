@@ -101,7 +101,7 @@ trait ApprovalRequestModelTrait
       'aprStatus' => [
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuApprovalRequestStatus::NEW,
+        enuColumnInfo::default    => enuApprovalRequestStatus::New,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
       ],

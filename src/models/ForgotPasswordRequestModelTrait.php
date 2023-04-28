@@ -76,7 +76,7 @@ trait ForgotPasswordRequestModelTrait
       'fprStatus' => [
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuForgotPasswordRequestStatus::NEW,
+        enuColumnInfo::default    => enuForgotPasswordRequestStatus::New,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
       ],

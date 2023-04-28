@@ -9,18 +9,18 @@ use shopack\base\common\base\BaseEnum;
 
 abstract class enuUserStatus extends BaseEnum
 {
-  const ACTIVE 										= 'A';
-  const INACTIVE 									= 'D';
-  const NEW_FOR_LOGIN_BY_MOBILE 	= 'L'; //will be delete after 24 hours if not changed to others
-  const REMOVED 									= 'R';
+  const Active 								= 'A';
+  const Inactive 							= 'D';
+  const NewForLoginByMobile 	= 'L'; //will be delete after 24 hours if not changed to others
+  const Removed 							= 'R';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::ACTIVE									=> 'Active',
-		self::INACTIVE								=> 'Inactive',
-		self::NEW_FOR_LOGIN_BY_MOBILE	=> 'For Login By Mobile',
-		self::REMOVED 								=> 'Removed',
+		self::Active							 => 'Active',
+		self::Inactive						 => 'Inactive',
+		self::NewForLoginByMobile	 => 'For Login By Mobile',
+		self::Removed 						 => 'Removed',
 	];
 
 };

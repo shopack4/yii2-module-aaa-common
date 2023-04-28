@@ -152,7 +152,7 @@ trait UserModelTrait
       'usrRoleID' => [
         enuColumnInfo::type       => 'integer',
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuRole::USER,
+        enuColumnInfo::default    => enuRole::User,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
       ],
@@ -430,7 +430,7 @@ trait UserModelTrait
     ]));
 	}
 
-  public function actorName() {
+  public function getActorName() {
     return $this->displayName('{id}- {em}');
   }
 

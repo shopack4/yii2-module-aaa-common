@@ -9,21 +9,21 @@ use shopack\base\common\base\BaseEnum;
 
 abstract class enuGatewayStatus extends BaseEnum
 {
-  const ACTIVE 		= 'A';
-  const INACTIVE 	= 'D';
-  const REMOVED 	= 'R';
+  const Active 		= 'A';
+  const Inactive 	= 'D';
+  const Removed 	= 'R';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
 		[
-			self::ACTIVE		=> 'Active',
-			self::INACTIVE	=> 'Inactive',
-			self::REMOVED 	=> 'Removed',
+			self::Active		=> 'Active',
+			self::Inactive	=> 'Inactive',
+			self::Removed 	=> 'Removed',
 		],
 		'form' => [
-			self::ACTIVE,
-			self::INACTIVE,
+			self::Active,
+			self::Inactive,
 		],
 	];
 

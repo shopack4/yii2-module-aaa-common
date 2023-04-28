@@ -112,7 +112,7 @@ trait UploadFileModelTrait
       'uflStatus' => [
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuUploadFileStatus::NEW,
+        enuColumnInfo::default    => enuUploadFileStatus::New,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
       ],

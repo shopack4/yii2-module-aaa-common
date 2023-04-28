@@ -11,11 +11,14 @@ use shopack\aaa\common\enums\enuOnlinePaymentStatus;
 
 /*
 'onpID',
-'onpName',
-'onpKey',
-'onpPluginType',
-'onpPluginName',
-'onpPluginParameters',
+'onpUUID',
+'onpGatewayID',
+'onpVoucherID',
+'onpAmount',
+'onpCallbackUrl',
+'onpWalletID',
+'onpTrackNumber',
+'onpResult',
 'onpStatus',
 'onpCreatedAt',
 'onpCreatedBy',
@@ -41,52 +44,73 @@ trait OnlinePaymentModelTrait
 				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => true,
 			],
-			'onpName' => [
-				enuColumnInfo::type       => ['string', 'max' => 64],
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => true,
-				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
-			],
-			'onpKey' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
+			'onpUUID' => [
+				enuColumnInfo::type       => 'safe', //['string', 'max' => 38],
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false, //true,
 				enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => 'like',
 			],
-			'onpPluginType' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
+			'onpGatewayID' => [
+				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
+        enuColumnInfo::search     => true,
+			],
+			'onpVoucherID' => [
+				enuColumnInfo::type       => 'integer',
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => true,
+				enuColumnInfo::selectable => true,
+			],
+			'onpAmount' => [
+				enuColumnInfo::type       => 'integer',
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => true,
+				enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
 
 			],
-			'onpPluginName' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
+			'onpCallbackUrl' => [
+				enuColumnInfo::type       => ['string', 'max' => 1024],
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
+        // enuColumnInfo::search     => 'like',
+			],
+			'onpWalletID' => [
+				enuColumnInfo::type       => 'integer',
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => true,
+				enuColumnInfo::selectable => true,
+				enuColumnInfo::search     => true,
+			],
+			'onpTrackNumber' => [
+				enuColumnInfo::type       => ['string', 'max' => 64],
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => false,
+				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => 'like',
 			],
-			'onpPluginParameters' => [
+			'onpResult' => [
 				enuColumnInfo::type       => JsonValidator::class,
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => true,
-				enuColumnInfo::selectable => [
-					['aaa/online-payment/crud', '1000'],
-					['aaa/online-payment/crud', '0010']
-				], //only for admins with create OR update permission
+				enuColumnInfo::required   => false,
+				enuColumnInfo::selectable => true,
 			],
 			'onpStatus' => [
 				enuColumnInfo::type       => ['string', 'max' => 1],
 				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => enuOnlinePaymentStatus::ACTIVE,
+				enuColumnInfo::default    => enuOnlinePaymentStatus::New,
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => true,
@@ -168,6 +192,28 @@ trait OnlinePaymentModelTrait
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
 		return $this->hasOne($className, ['usrID' => 'onpRemovedBy']);
+	}
+
+	public function getGateway() {
+		$className = get_called_class();
+
+		if (str_contains($className, '\\backend\\'))
+			$className = '\shopack\aaa\backend\models\GatewayModel';
+		else
+			$className = '\shopack\aaa\frontend\common\models\GatewayModel';
+
+		return $this->hasOne($className, ['gtwID' => 'onpGatewayID']);
+	}
+
+	public function getVoucher() {
+		$className = get_called_class();
+
+		if (str_contains($className, '\\backend\\'))
+			$className = '\shopack\aaa\backend\models\VoucherModel';
+		else
+			$className = '\shopack\aaa\frontend\common\models\VoucherModel';
+
+		return $this->hasOne($className, ['vchID' => 'onpVoucherID']);
 	}
 
 }

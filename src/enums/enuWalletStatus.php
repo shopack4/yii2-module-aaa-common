@@ -7,7 +7,7 @@ namespace shopack\aaa\common\enums;
 
 use shopack\base\common\base\BaseEnum;
 
-abstract class enuAlertTemplateStatus extends BaseEnum
+abstract class enuWalletStatus extends BaseEnum
 {
   const Active 		= 'A';
   const Inactive 	= 'D';

@@ -6,36 +6,33 @@
 namespace shopack\aaa\common\models;
 
 use shopack\base\common\rest\enuColumnInfo;
-use shopack\base\common\validators\JsonValidator;
-use shopack\aaa\common\enums\enuGatewayStatus;
+use shopack\aaa\common\enums\enuWalletTransactionStatus;
 
 /*
-'gtwID',
-'gtwName',
-'gtwKey',
-'gtwPluginType',
-'gtwPluginName',
-'gtwPluginParameters',
-'gtwRestrictions',
-'gtwUsages',
-'gtwStatus',
-'gtwCreatedAt',
-'gtwCreatedBy',
-'gtwUpdatedAt',
-'gtwUpdatedBy',
-'gtwRemovedAt',
-'gtwRemovedBy',
+'wtrID',
+'wtrWalletID',
+'wtrVoucherID',
+'wtrOnlinePaymentID',
+'wtrOfflinePaymentID',
+'wtrAmount',
+'wtrStatus',
+'wtrCreatedAt',
+'wtrCreatedBy',
+'wtrUpdatedAt',
+'wtrUpdatedBy',
+'wtrRemovedAt',
+'wtrRemovedBy',
 */
-trait GatewayModelTrait
+trait WalletTransactionModelTrait
 {
 	public function primaryKeyValue() {
-		return $this->gtwID;
+		return $this->walID;
 	}
 
 	public static function columnsInfo()
 	{
 		return [
-			'gtwID' => [
+			'wtrID' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
@@ -43,106 +40,90 @@ trait GatewayModelTrait
 				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => true,
 			],
-			'gtwName' => [
-				enuColumnInfo::type       => ['string', 'max' => 64],
+			'wtrWalletID' => [
+				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
+        enuColumnInfo::search     => true,
 			],
-			'gtwKey' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => false, //true,
-				enuColumnInfo::selectable => true,
-			],
-			'gtwPluginType' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
+			'wtrVoucherID' => [
+				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
-
+        enuColumnInfo::search     => true,
 			],
-			'gtwPluginName' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => true,
-				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
-			],
-			'gtwPluginParameters' => [
-				enuColumnInfo::type       => JsonValidator::class,
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => true,
-				enuColumnInfo::selectable => [
-					['aaa/gateway/crud', '1000'],
-					['aaa/gateway/crud', '0010']
-				], //only for admins with create OR update permission
-			],
-			'gtwRestrictions' => [
-				enuColumnInfo::type       => JsonValidator::class,
+			'wtrOnlinePaymentID' => [
+				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
+				enuColumnInfo::search     => true,
 			],
-			'gtwUsages' => [
-				enuColumnInfo::type       => JsonValidator::class,
+			'wtrOfflinePaymentID' => [
+				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
+				enuColumnInfo::search     => true,
 			],
-			'gtwStatus' => [
+			'wtrAmount' => [
+				enuColumnInfo::type       => 'integer',
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => true,
+				enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
+			],
+			'wtrStatus' => [
 				enuColumnInfo::type       => ['string', 'max' => 1],
 				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => enuGatewayStatus::Active,
+				enuColumnInfo::default    => enuWalletTransactionStatus::New,
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => true,
 			],
-      'gtwCreatedAt' => [
+      'wtrCreatedAt' => [
 				enuColumnInfo::type       => 'safe',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-      'gtwCreatedBy' => [
+      'wtrCreatedBy' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-      'gtwUpdatedAt' => [
+      'wtrUpdatedAt' => [
 				enuColumnInfo::type       => 'safe',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-      'gtwUpdatedBy' => [
+      'wtrUpdatedBy' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-			'gtwRemovedAt' => [
+			'wtrRemovedAt' => [
 				enuColumnInfo::type       => 'safe',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-			'gtwRemovedBy' => [
+			'wtrRemovedBy' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
@@ -161,7 +142,7 @@ trait GatewayModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'gtwCreatedBy']);
+		return $this->hasOne($className, ['usrID' => 'wtrCreatedBy']);
 	}
 
 	public function getUpdatedByUser() {
@@ -172,7 +153,7 @@ trait GatewayModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'gtwUpdatedBy']);
+		return $this->hasOne($className, ['usrID' => 'wtrUpdatedBy']);
 	}
 
 	public function getRemovedByUser() {
@@ -183,7 +164,18 @@ trait GatewayModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'gtwRemovedBy']);
+		return $this->hasOne($className, ['usrID' => 'wtrRemovedBy']);
+	}
+
+	public function getWallet() {
+		$className = get_called_class();
+
+		if (str_contains($className, '\\backend\\'))
+			$className = '\shopack\aaa\backend\models\WalletModel';
+		else
+			$className = '\shopack\aaa\frontend\common\models\WalletModel';
+
+		return $this->hasOne($className, ['walID' => 'wtrWalletID']);
 	}
 
 }

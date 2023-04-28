@@ -41,7 +41,7 @@ trait SessionModelTrait
       'ssnStatus' => [
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuSessionStatus::PENDING,
+        enuColumnInfo::default    => enuSessionStatus::Pending,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
       ],

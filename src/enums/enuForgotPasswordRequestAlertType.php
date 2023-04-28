@@ -9,18 +9,18 @@ use shopack\base\common\base\BaseEnum;
 
 abstract class enuForgotPasswordRequestAlertType extends BaseEnum
 {
-  const REQUEST_BY_EMAIL  = 'forgotPassByEmail';
-  const REQUEST_BY_MOBILE = 'forgotPassByMobile';
-  const CHANGED_BY_EMAIL  = 'passChangedByEmail';
-  const CHANGED_BY_MOBILE = 'passChangedByMobile';
+  const RequestByEmail  = 'forgotPassByEmail';
+  const RequestByMobile = 'forgotPassByMobile';
+  const ChangedByEmail  = 'passChangedByEmail';
+  const ChangedByMobile = 'passChangedByMobile';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::REQUEST_BY_EMAIL  => 'forgotPassByEmail',
-		self::REQUEST_BY_MOBILE => 'forgotPassByMobile',
-		self::CHANGED_BY_EMAIL  => 'passChangedByEmail',
-		self::CHANGED_BY_MOBILE => 'passChangedByMobile',
+		self::RequestByEmail  => 'forgotPassByEmail',
+		self::RequestByMobile => 'forgotPassByMobile',
+		self::ChangedByEmail  => 'passChangedByEmail',
+		self::ChangedByMobile => 'passChangedByMobile',
 	];
 
 };

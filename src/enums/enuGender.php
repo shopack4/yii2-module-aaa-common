@@ -9,24 +9,24 @@ use shopack\base\common\base\BaseEnum;
 
 abstract class enuGender extends BaseEnum
 {
-	const NOT_SET	= 'N';
-	const MALE		= 'M';
-	const FEMALE	= 'F';
+	const NotSet	= 'N';
+	const Male		= 'M';
+	const Female	= 'F';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::NOT_SET	=> 'None',
-		self::MALE		=> 'Male',
-		self::FEMALE	=> 'Female',
+		self::NotSet	=> 'None',
+		self::Male		=> 'Male',
+		self::Female	=> 'Female',
 	];
 
 	public static function getAbrLabel($value)
 	{
-		if ($value == self::MALE)
+		if ($value == self::Male)
 			return 'Mr';
 
-		if ($value == self::FEMALE)
+		if ($value == self::Female)
 			return 'Ms';
 
 		return '';

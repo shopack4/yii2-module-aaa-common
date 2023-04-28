@@ -9,18 +9,18 @@ use shopack\base\common\base\BaseEnum;
 
 abstract class enuApprovalRequestStatus extends BaseEnum
 {
-  const NEW 				= 'N';
-  const SENT 				= 'S';
-  const APPLIED 		= 'A';
-  const EXPIRED 		= 'E';
+  const New 				= 'N';
+  const Sent 				= 'S';
+  const Applied 		= 'A';
+  const Expired 		= 'X'; //'E';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::NEW 				=> 'New',
-		self::SENT 				=> 'Sent',
-		self::APPLIED			=> 'Applied',
-		self::EXPIRED 		=> 'Expired',
+		self::New 				=> 'New',
+		self::Sent 				=> 'Sent',
+		self::Applied			=> 'Applied',
+		self::Expired 		=> 'Expired',
 	];
 
 };

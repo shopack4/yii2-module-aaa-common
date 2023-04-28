@@ -7,35 +7,33 @@ namespace shopack\aaa\common\models;
 
 use shopack\base\common\rest\enuColumnInfo;
 use shopack\base\common\validators\JsonValidator;
-use shopack\aaa\common\enums\enuGatewayStatus;
+use shopack\aaa\common\enums\enuVoucherStatus;
+use shopack\aaa\common\enums\enuVoucherType;
 
 /*
-'gtwID',
-'gtwName',
-'gtwKey',
-'gtwPluginType',
-'gtwPluginName',
-'gtwPluginParameters',
-'gtwRestrictions',
-'gtwUsages',
-'gtwStatus',
-'gtwCreatedAt',
-'gtwCreatedBy',
-'gtwUpdatedAt',
-'gtwUpdatedBy',
-'gtwRemovedAt',
-'gtwRemovedBy',
+'vchID',
+'vchOwnerUserID',
+'vchType',
+'vchAmount',
+'vchItems',
+'vchStatus',
+'vchCreatedAt',
+'vchCreatedBy',
+'vchUpdatedAt',
+'vchUpdatedBy',
+'vchRemovedAt',
+'vchRemovedBy',
 */
-trait GatewayModelTrait
+trait VoucherModelTrait
 {
 	public function primaryKeyValue() {
-		return $this->gtwID;
+		return $this->vchID;
 	}
 
 	public static function columnsInfo()
 	{
 		return [
-			'gtwID' => [
+			'vchID' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
@@ -43,106 +41,82 @@ trait GatewayModelTrait
 				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => true,
 			],
-			'gtwName' => [
-				enuColumnInfo::type       => ['string', 'max' => 64],
+			'vchOwnerUserID' => [
+				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
+        enuColumnInfo::search     => true,
 			],
-			'gtwKey' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => false, //true,
-				enuColumnInfo::selectable => true,
-			],
-			'gtwPluginType' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => true,
-				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
-
-			],
-			'gtwPluginName' => [
-				enuColumnInfo::type       => ['string', 'max' => 48],
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => true,
-				enuColumnInfo::selectable => true,
-        enuColumnInfo::search     => 'like',
-			],
-			'gtwPluginParameters' => [
-				enuColumnInfo::type       => JsonValidator::class,
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => true,
-				enuColumnInfo::selectable => [
-					['aaa/gateway/crud', '1000'],
-					['aaa/gateway/crud', '0010']
-				], //only for admins with create OR update permission
-			],
-			'gtwRestrictions' => [
-				enuColumnInfo::type       => JsonValidator::class,
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => false,
-				enuColumnInfo::selectable => true,
-			],
-			'gtwUsages' => [
-				enuColumnInfo::type       => JsonValidator::class,
-				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => null,
-				enuColumnInfo::required   => false,
-				enuColumnInfo::selectable => true,
-			],
-			'gtwStatus' => [
+			'vchType' => [
 				enuColumnInfo::type       => ['string', 'max' => 1],
 				enuColumnInfo::validator  => null,
-				enuColumnInfo::default    => enuGatewayStatus::Active,
+				enuColumnInfo::default    => null, //enuVoucherType
 				enuColumnInfo::required   => true,
 				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => true,
 			],
-      'gtwCreatedAt' => [
+			'vchAmount' => [
+				enuColumnInfo::type       => 'integer',
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => true,
+				enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
+			],
+			'vchItems' => [
+				enuColumnInfo::type       => JsonValidator::class,
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => false,
+				enuColumnInfo::selectable => true,
+        // enuColumnInfo::search     => true,
+			],
+			'vchStatus' => [
+				enuColumnInfo::type       => ['string', 'max' => 1],
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => enuVoucherStatus::New,
+				enuColumnInfo::required   => true,
+				enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
+			],
+      'vchCreatedAt' => [
 				enuColumnInfo::type       => 'safe',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-      'gtwCreatedBy' => [
+      'vchCreatedBy' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-      'gtwUpdatedAt' => [
+      'vchUpdatedAt' => [
 				enuColumnInfo::type       => 'safe',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-      'gtwUpdatedBy' => [
+      'vchUpdatedBy' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-			'gtwRemovedAt' => [
+			'vchRemovedAt' => [
 				enuColumnInfo::type       => 'safe',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
 				enuColumnInfo::required   => false,
 				enuColumnInfo::selectable => true,
 			],
-			'gtwRemovedBy' => [
+			'vchRemovedBy' => [
 				enuColumnInfo::type       => 'integer',
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => null,
@@ -161,7 +135,7 @@ trait GatewayModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'gtwCreatedBy']);
+		return $this->hasOne($className, ['usrID' => 'vchCreatedBy']);
 	}
 
 	public function getUpdatedByUser() {
@@ -172,7 +146,7 @@ trait GatewayModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'gtwUpdatedBy']);
+		return $this->hasOne($className, ['usrID' => 'vchUpdatedBy']);
 	}
 
 	public function getRemovedByUser() {
@@ -183,7 +157,18 @@ trait GatewayModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'gtwRemovedBy']);
+		return $this->hasOne($className, ['usrID' => 'vchRemovedBy']);
+	}
+
+	public function getOwner() {
+		$className = get_called_class();
+
+		if (str_contains($className, '\\backend\\'))
+			$className = '\shopack\aaa\backend\models\UserModel';
+		else
+			$className = '\shopack\aaa\frontend\common\models\UserModel';
+
+		return $this->hasOne($className, ['usrID' => 'vchOwnerUserID']);
 	}
 
 }

@@ -7,16 +7,16 @@ namespace shopack\aaa\common\enums;
 
 use shopack\base\common\base\BaseEnum;
 
-abstract class enuAlertType extends BaseEnum
+abstract class enuAlertTemplateMedia extends BaseEnum
 {
-  const EMAIL 	= 'E';
-  const MOBILE 	= 'M';
+  const Email 	= 'E';
+  const Sms			= 'S';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::EMAIL  => 'Email',
-		self::MOBILE => 'Mobile',
+		self::Email 	=> 'Email',
+		self::Sms			=> 'Sms',
 	];
 
 };

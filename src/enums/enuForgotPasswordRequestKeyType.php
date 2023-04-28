@@ -9,14 +9,14 @@ use shopack\base\common\base\BaseEnum;
 
 abstract class enuForgotPasswordRequestKeyType extends BaseEnum
 {
-  const EMAIL 	= 'E';
-  const MOBILE 	= 'M';
+  const Email 	= 'E';
+  const Mobile 	= 'M';
 
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::EMAIL  => 'Email',
-		self::MOBILE => 'Mobile',
+		self::Email  => 'Email',
+		self::Mobile => 'Mobile',
 	];
 
 };
