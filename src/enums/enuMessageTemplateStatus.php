@@ -7,7 +7,7 @@ namespace shopack\aaa\common\enums;
 
 use shopack\base\common\base\BaseEnum;
 
-abstract class enuAlertTemplateStatus extends BaseEnum
+abstract class enuMessageTemplateStatus extends BaseEnum
 {
   const Active 		= 'A';
   const Inactive 	= 'D';
@@ -16,9 +16,15 @@ abstract class enuAlertTemplateStatus extends BaseEnum
 	public static $messageCategory = 'aaa';
 
 	public static $list = [
-		self::Active		=> 'Active',
-		self::Inactive	=> 'Inactive',
-		self::Removed 	=> 'Removed',
+		[
+			self::Active		=> 'Active',
+			self::Inactive	=> 'Inactive',
+			self::Removed 	=> 'Removed',
+		],
+		'form' => [
+			self::Active		=> 'Active',
+			self::Inactive	=> 'Inactive',
+		],
 	];
 
 };

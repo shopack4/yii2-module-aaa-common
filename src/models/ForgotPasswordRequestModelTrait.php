@@ -74,11 +74,13 @@ trait ForgotPasswordRequestModelTrait
         enuColumnInfo::selectable => true,
       ],
       'fprStatus' => [
+        enuColumnInfo::isStatus   => true,
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => enuForgotPasswordRequestStatus::New,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
       ],
       'fprCreatedAt' => [
         enuColumnInfo::type       => 'safe',

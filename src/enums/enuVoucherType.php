@@ -16,6 +16,8 @@ abstract class enuVoucherType extends BaseEnum
   const TransferTo		= 'T';
   const TransferFrom	= 'F';
   const Prize					= 'Z';
+	//Freeze
+	//Unfreeze
 
 	public static $messageCategory = 'aaa';
 

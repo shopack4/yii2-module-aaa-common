@@ -100,6 +100,7 @@ trait GatewayModelTrait
 				enuColumnInfo::selectable => true,
 			],
 			'gtwStatus' => [
+				enuColumnInfo::isStatus   => true,
 				enuColumnInfo::type       => ['string', 'max' => 1],
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => enuGatewayStatus::Active,

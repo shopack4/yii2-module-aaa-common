@@ -81,6 +81,7 @@ trait WalletTransactionModelTrait
         enuColumnInfo::search     => true,
 			],
 			'wtrStatus' => [
+				enuColumnInfo::isStatus   => true,
 				enuColumnInfo::type       => ['string', 'max' => 1],
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => enuWalletTransactionStatus::New,
@@ -176,6 +177,28 @@ trait WalletTransactionModelTrait
 			$className = '\shopack\aaa\frontend\common\models\WalletModel';
 
 		return $this->hasOne($className, ['walID' => 'wtrWalletID']);
+	}
+
+	public function getVoucher() {
+		$className = get_called_class();
+
+		if (str_contains($className, '\\backend\\'))
+			$className = '\shopack\aaa\backend\models\VoucherModel';
+		else
+			$className = '\shopack\aaa\frontend\common\models\VoucherModel';
+
+		return $this->hasOne($className, ['vchID' => 'wtrVoucherID']);
+	}
+
+	public function getOnlinePayment() {
+		$className = get_called_class();
+
+		if (str_contains($className, '\\backend\\'))
+			$className = '\shopack\aaa\backend\models\OnlinePaymentModel';
+		else
+			$className = '\shopack\aaa\frontend\common\models\OnlinePaymentModel';
+
+		return $this->hasOne($className, ['onpID' => 'wtrOnlinePaymentID']);
 	}
 
 }

@@ -72,6 +72,7 @@ trait WalletModelTrait
         enuColumnInfo::search     => true,
 			],
 			'walStatus' => [
+				enuColumnInfo::isStatus   => true,
 				enuColumnInfo::type       => ['string', 'max' => 1],
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => enuWalletStatus::Active,

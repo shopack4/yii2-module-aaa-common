@@ -7,134 +7,149 @@ namespace shopack\aaa\common\models;
 
 use shopack\base\common\rest\enuColumnInfo;
 // use shopack\base\common\validators\JsonValidator;
-use shopack\aaa\common\enums\enuAlertTemplateStatus;
-use shopack\aaa\common\enums\enuAlertTemplateMedia;
+use shopack\aaa\common\enums\enuMessageTemplateStatus;
+use shopack\aaa\common\enums\enuMessageTemplateMedia;
 
 /*
-'altID',
-'altKey',
-'altMedia',
-'altLanguage',
-'altTitle',
-'altBody',
-'altParamsPrefix',
-'altParamsSuffix',
-'altStatus',
-'altCreatedAt',
-'altCreatedBy',
-'altUpdatedAt',
-'altUpdatedBy',
-'altRemovedAt',
-'altRemovedBy',
+'mstID',
+'mstKey',
+'mstMedia',
+'mstLanguage',
+'mstTitle',
+'mstBody',
+'mstParamsPrefix',
+'mstParamsSuffix',
+'mstIsSystem',
+'mstStatus',
+'mstCreatedAt',
+'mstCreatedBy',
+'mstUpdatedAt',
+'mstUpdatedBy',
+'mstRemovedAt',
+'mstRemovedBy',
 */
-trait AlertTemplateModelTrait
+trait MessageTemplateModelTrait
 {
   public function primaryKeyValue() {
-		return $this->altID;
+		return $this->mstID;
 	}
 
 	public static function columnsInfo()
   {
     return [
-			'altID' => [
+			'mstID' => [
 				enuColumnInfo::type       => 'integer',
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
 			],
-			'altKey' => [
+			'mstKey' => [
 				enuColumnInfo::type       => ['string', 'max' => 64],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
 			],
-			'altMedia' => [
+			'mstMedia' => [
 				enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => null, //enuAlertTemplateMedia
+        enuColumnInfo::default    => null, //enuMessageTemplateMedia
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
 			],
-			'altLanguage' => [ //fa, fa_IR
+			'mstLanguage' => [ //fa, fa_IR
 				enuColumnInfo::type       => ['string', 'max' => 5],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
 			],
-			'altTitle' => [
+			'mstTitle' => [
 				enuColumnInfo::type       => ['string', 'max' => 512],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
 			],
-			'altBody' => [
+			'mstBody' => [
 				enuColumnInfo::type       => 'string', //mediumtext
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
 			],
-			'altParamsPrefix' => [
+			'mstParamsPrefix' => [
 				enuColumnInfo::type       => ['string', 'max' => 10],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => null,
+        enuColumnInfo::default    => '{{',
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
 			],
-			'altParamsSuffix' => [
+			'mstParamsSuffix' => [
 				enuColumnInfo::type       => ['string', 'max' => 10],
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => null,
+        enuColumnInfo::default    => '}}',
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
 			],
-			'altStatus' => [
-				enuColumnInfo::type       => ['string', 'max' => 1],
+      'mstIsSystem' => [
+				enuColumnInfo::type       => 'boolean',
         enuColumnInfo::validator  => null,
-        enuColumnInfo::default    => enuAlertTemplateStatus::Active,
+        enuColumnInfo::default    => false,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
 			],
-			'altCreatedAt' => [
+			'mstStatus' => [
+        enuColumnInfo::isStatus   => true,
+				enuColumnInfo::type       => ['string', 'max' => 1],
+        enuColumnInfo::validator  => null,
+        enuColumnInfo::default    => enuMessageTemplateStatus::Active,
+        enuColumnInfo::required   => true,
+        enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
+			],
+			'mstCreatedAt' => [
 				enuColumnInfo::type       => 'safe',
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
 			],
-			'altCreatedBy' => [
+			'mstCreatedBy' => [
 				enuColumnInfo::type       => 'integer',
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
 			],
-      'altUpdatedAt' => [
+      'mstUpdatedAt' => [
         enuColumnInfo::type       => 'safe',
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
       ],
-      'altUpdatedBy' => [
+      'mstUpdatedBy' => [
         enuColumnInfo::type       => 'integer',
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
       ],
-      'altRemovedAt' => [
+      'mstRemovedAt' => [
         enuColumnInfo::type       => 'integer',
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
       ],
-      'altRemovedBy' => [
+      'mstRemovedBy' => [
         enuColumnInfo::type       => 'integer',
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
@@ -152,7 +167,7 @@ trait AlertTemplateModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'altCreatedBy']);
+		return $this->hasOne($className, ['usrID' => 'mstCreatedBy']);
 	}
 
   public function getUpdatedByUser() {
@@ -163,7 +178,7 @@ trait AlertTemplateModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'altUpdatedBy']);
+		return $this->hasOne($className, ['usrID' => 'mstUpdatedBy']);
 	}
 
 	public function getRemovedByUser() {
@@ -174,7 +189,7 @@ trait AlertTemplateModelTrait
 		else
 			$className = '\shopack\aaa\frontend\common\models\UserModel';
 
-		return $this->hasOne($className, ['usrID' => 'altRemovedBy']);
+		return $this->hasOne($className, ['usrID' => 'mstRemovedBy']);
 	}
 
 }

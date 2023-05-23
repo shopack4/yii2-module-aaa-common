@@ -39,11 +39,13 @@ trait SessionModelTrait
         enuColumnInfo::selectable => true,
       ],
       'ssnStatus' => [
+        enuColumnInfo::isStatus   => true,
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => enuSessionStatus::Pending,
         enuColumnInfo::required   => false,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
       ],
       'ssnExpireAt' => [
         enuColumnInfo::type       => 'safe',

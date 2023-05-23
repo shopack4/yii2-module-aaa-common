@@ -7,7 +7,7 @@ namespace shopack\aaa\common\enums;
 
 use shopack\base\common\base\BaseEnum;
 
-abstract class enuApprovalRequestAlertType extends BaseEnum
+abstract class enuApprovalRequestMessageType extends BaseEnum
 {
   const EmailApproval            = 'emailApproval';
   const MobileApproval           = 'mobileApproval';

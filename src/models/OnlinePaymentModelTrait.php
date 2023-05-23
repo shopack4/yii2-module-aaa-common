@@ -18,6 +18,7 @@ use shopack\aaa\common\enums\enuOnlinePaymentStatus;
 'onpCallbackUrl',
 'onpWalletID',
 'onpTrackNumber',
+'onpRRN',
 'onpResult',
 'onpStatus',
 'onpCreatedAt',
@@ -100,6 +101,14 @@ trait OnlinePaymentModelTrait
 				enuColumnInfo::selectable => true,
         enuColumnInfo::search     => 'like',
 			],
+			'onpRRN' => [
+				enuColumnInfo::type       => ['string', 'max' => 64],
+				enuColumnInfo::validator  => null,
+				enuColumnInfo::default    => null,
+				enuColumnInfo::required   => false,
+				enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => 'like',
+			],
 			'onpResult' => [
 				enuColumnInfo::type       => JsonValidator::class,
 				enuColumnInfo::validator  => null,
@@ -108,6 +117,7 @@ trait OnlinePaymentModelTrait
 				enuColumnInfo::selectable => true,
 			],
 			'onpStatus' => [
+				enuColumnInfo::isStatus   => true,
 				enuColumnInfo::type       => ['string', 'max' => 1],
 				enuColumnInfo::validator  => null,
 				enuColumnInfo::default    => enuOnlinePaymentStatus::New,
@@ -214,6 +224,17 @@ trait OnlinePaymentModelTrait
 			$className = '\shopack\aaa\frontend\common\models\VoucherModel';
 
 		return $this->hasOne($className, ['vchID' => 'onpVoucherID']);
+	}
+
+	public function getWallet() {
+		$className = get_called_class();
+
+		if (str_contains($className, '\\backend\\'))
+			$className = '\shopack\aaa\backend\models\WalletModel';
+		else
+			$className = '\shopack\aaa\frontend\common\models\WalletModel';
+
+		return $this->hasOne($className, ['walID' => 'onpWalletID']);
 	}
 
 }

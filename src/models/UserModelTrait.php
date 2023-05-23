@@ -252,6 +252,7 @@ trait UserModelTrait
         enuColumnInfo::search     => false, //true
       ],
       'usrStatus' => [
+        enuColumnInfo::isStatus   => true,
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => null,
@@ -421,12 +422,18 @@ trait UserModelTrait
   }
 
   public function displayName($format='{id}- {fn} {ln} {em} {mob}') {
+    if ($this->usrEmail)
+      $email = "<span class='d-inline-block dir-ltr'>" . $this->usrEmail . "</span>";
+
+    if ($this->usrMobile)
+      $mobile = "<span class='d-inline-block dir-ltr'>" . $this->usrMobile . "</span>";
+
     return str_replace('  ', ' ', strtr($format, [
       '{id}' => $this->usrID,
       '{fn}' => $this->usrFirstName ?? '',
       '{ln}' => $this->usrLastName ?? '',
-      '{em}' => $this->usrEmail ?? '',
-      '{mob}' => $this->usrMobile ?? '',
+      '{em}' => $email ?? '',
+      '{mob}' => $mobile ?? '',
     ]));
 	}
 

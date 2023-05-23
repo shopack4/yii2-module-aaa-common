@@ -91,11 +91,13 @@ trait UploadQueueModelTrait
         enuColumnInfo::selectable => true,
 			],
       'uquStatus' => [
+        enuColumnInfo::isStatus   => true,
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => enuUploadQueueStatus::New,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
       ],
       'uquCreatedAt' => [
         enuColumnInfo::type       => 'safe',

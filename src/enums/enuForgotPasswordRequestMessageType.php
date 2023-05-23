@@ -7,7 +7,7 @@ namespace shopack\aaa\common\enums;
 
 use shopack\base\common\base\BaseEnum;
 
-abstract class enuForgotPasswordRequestAlertType extends BaseEnum
+abstract class enuForgotPasswordRequestMessageType extends BaseEnum
 {
   const RequestByEmail  = 'forgotPassByEmail';
   const RequestByMobile = 'forgotPassByMobile';

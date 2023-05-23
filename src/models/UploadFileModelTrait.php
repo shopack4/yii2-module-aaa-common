@@ -110,11 +110,13 @@ trait UploadFileModelTrait
         enuColumnInfo::selectable => true,
       ],
       'uflStatus' => [
+        enuColumnInfo::isStatus   => true,
         enuColumnInfo::type       => ['string', 'max' => 1],
         enuColumnInfo::validator  => null,
         enuColumnInfo::default    => enuUploadFileStatus::New,
         enuColumnInfo::required   => true,
         enuColumnInfo::selectable => true,
+        enuColumnInfo::search     => true,
       ],
       'uflCreatedAt' => [
         enuColumnInfo::type       => 'safe',

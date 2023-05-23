@@ -24,10 +24,10 @@ abstract class enuGender extends BaseEnum
 	public static function getAbrLabel($value)
 	{
 		if ($value == self::Male)
-			return 'Mr';
+			return 'آقای';
 
 		if ($value == self::Female)
-			return 'Ms';
+			return 'خانم';
 
 		return '';
 	}
